@@ -1,30 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-    <title>Tabuada</title>
-</head>
-<body>
-    <h1>Calculadora de Tabuada</h1>
-    <input type="number" id="numeroInput" placeholder="Digite um número">
-    <div id="tabuada"></div>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuada</title> 
     <script>
-        const numeroInput = document.getElementById('numeroInput');
-        const tabuadaDiv = document.getElementById('tabuada');
+        function mostrarTabuada() {
+            const numero = document.getElementById('numeroInput').value;
+            const tabuadaDiv = document.getElementById('tabuada');
+            tabuadaDiv.innerHTML = '';
 
-        numeroInput.addEventListener('input', function() {
-            const numero = parseInt(numeroInput.value);
-            if (!isNaN(numero)) {
-                tabuadaDiv.innerHTML = '';
-                for (let i = 1; i <= 10; i++) {
-                    const resultado = numero * i;
-                    const linha = `${numero} x ${i} = ${resultado}<br>`;
-                    tabuadaDiv.innerHTML += linha;
-                }
-            } else {
-                tabuadaDiv.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                const resultado = numero * i;
+                tabuadaDiv.innerHTML += `${numero} x ${i} = ${resultado}<br>`;
             }
-        });
+        }
     </script>
+    <style>
+        #tab{
+            margin-top: 100px;
+            margin-left: 700px;
+            margin-right: 600px;
+            font-family: Arial, Helvetica, sans-serif;
+            display: grid;
+            justify-content: center;
+            background-color: rgb(223, 223, 217);
+            box-shadow: 0px 3px 10px #2c3546;
+            border-radius: 5px;
+            
+        }
+       input{
+        display: grid;
+        box-shadow: 0px 3px 10px #2c3546;
+        text-align: center;
+        font-size: medium;
+        
+       }
+       #tabuada{
+        margin-top: 10px;
+        text-align: center;
+        font-size: x-large;
+       }
+    </style>
+</head>   
+<body>
+    <div id="tab">
+    <h1>Calculadora de Tabuada</h1>
+    <input type="number" id="numeroInput" oninput="mostrarTabuada()">
+    <div id="tabuada"></div>
+</div>
+   
 </body>
 </html>

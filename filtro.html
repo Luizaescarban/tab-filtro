@@ -1,34 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista com Negrito</title>
-    
-</head>
-<body>
-    <h1>Colocar em Negrito</h1>
-    <input type="text" id="filtroInput" placeholder="Digite um nome">
-    <ul id="lista">
-        <li>Bianca</li>
-        <li>Leila</li>
-        <li>Luiza</li>
-    </ul>
-
+    <title>Lista com Negrito</title> 
     <script>
-        const filtroInput = document.getElementById('filtroInput');
-        const lista = document.getElementById('lista');
+      function destacarNomes() {
+            const nomeInput = document.getElementById('nomeInput').value.toLowerCase();
+            const listaNomes = document.getElementById('listaNomes').getElementsByTagName('li');
 
-        filtroInput.addEventListener('input', function() {
-            const filtro = filtroInput.value.toLowerCase();
-
-            for (const item of lista.getElementsByTagName('li')) {
-                const nome = item.textContent.toLowerCase();
-                if (nome.includes(filtro)) {
-                    item.innerHTML = nome.replace(filtro, `<b>${filtro}</b>`);
+            for (let i = 0; i < listaNomes.length; i++) {
+                const nome = listaNomes[i].textContent.toLowerCase();
+                if (nome.includes(nomeInput)) {
+                    listaNomes[i].style.fontWeight = 'bold';
                 } else {
-                    item.innerHTML = nome;
+                    listaNomes[i].style.fontWeight = 'normal';
                 }
             }
-        });
+        }
     </script>
+    <style>
+        #lis{
+            margin-top: 100px;
+            margin-left: 700px;
+            margin-right: 600px;
+            font-family: Arial, Helvetica, sans-serif;
+            display: grid;
+            justify-content: center;
+            background-color: rgb(223, 223, 217);
+            box-shadow: 0px 3px 10px #2c3546;
+            border-radius: 5px;
+            
+        }
+       input{
+        display: grid;
+        box-shadow: 0px 3px 10px #2c3546;
+        text-align: center;
+        font-size: medium;
+        
+       }
+       #listaNomes{
+        margin-top: 10px;
+        text-align: center;
+        font-size: x-large;
+       }
+    </style>
+</head>
+<body>
+   <div id="lis">
+    <h2>Destaque de Nomes</h2>
+    <input type="text" id="nomeInput" oninput="destacarNomes()">
+    <ul id="listaNomes">
+        <li>João</li>
+        <li>Claudio</li>
+        <li>Marcio</li>
+    </ul>
+</div>
+    
 </body>
+</html>
 </html>
