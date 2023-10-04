@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista com Negrito</title>
+    
+</head>
+<body>
+    <h1>Colocar em Negrito</h1>
+    <input type="text" id="filtroInput" placeholder="Digite um nome">
+    <ul id="lista">
+        <li>Bianca</li>
+        <li>Leila</li>
+        <li>Luiza</li>
+    </ul>
+
+    <script>
+        const filtroInput = document.getElementById('filtroInput');
+        const lista = document.getElementById('lista');
+
+        filtroInput.addEventListener('input', function() {
+            const filtro = filtroInput.value.toLowerCase();
+
+            for (const item of lista.getElementsByTagName('li')) {
+                const nome = item.textContent.toLowerCase();
+                if (nome.includes(filtro)) {
+                    item.innerHTML = nome.replace(filtro, `<b>${filtro}</b>`);
+                } else {
+                    item.innerHTML = nome;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

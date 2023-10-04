@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabuada</title>
+</head>
+<body>
+    <h1>Calculadora de Tabuada</h1>
+    <input type="number" id="numeroInput" placeholder="Digite um número">
+    <div id="tabuada"></div>
+
+    <script>
+        const numeroInput = document.getElementById('numeroInput');
+        const tabuadaDiv = document.getElementById('tabuada');
+
+        numeroInput.addEventListener('input', function() {
+            const numero = parseInt(numeroInput.value);
+            if (!isNaN(numero)) {
+                tabuadaDiv.innerHTML = '';
+                for (let i = 1; i <= 10; i++) {
+                    const resultado = numero * i;
+                    const linha = `${numero} x ${i} = ${resultado}<br>`;
+                    tabuadaDiv.innerHTML += linha;
+                }
+            } else {
+                tabuadaDiv.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
